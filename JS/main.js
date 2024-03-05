@@ -8,43 +8,44 @@ let titleSeries = [];
 let favoriteSerie = [];
 
 
-/*Click serie favorita */
+
+/*Click serie favorita |FAVORITOS|  */
 const handleAddFavorite = (event) => {
+    event.preventDefault();
    const selectedSerie = titleSeries.find((serie) => {
     return parseInt(event.currentTarget.id) === serie.mal_id;
     });
     // buscar si el elemento seleccionado ya existe en favoritos
-    console.log('favoriteSerie', favoriteSerie);
     const indexFavSerie = favoriteSerie.findIndex((favoriteTitle) => {
         return favoriteTitle.mal_id === selectedSerie.mal_id;
     });
     console.log(favoriteSerie);
     if(indexFavSerie === -1){
         favoriteSerie.push(selectedSerie);
-    }
-    
-    console.log(selectedSerie);
+        event.currentTarget.style.backgroundColor = 'greenyellow';
+        event.currentTarget.style.color = 'deeppink';
+    };
 
-    /*Renderiza las series */
-renderSeries(favoriteSerie, containerFavoriteSerie);
+renderSeries(favoriteSerie, containerFavoriteSerie);   /*Renderiza las series */
 }
 
-/* Pintar las series en el html cuando la busquen*/
+
+/* Pintar las series en el html cuando la busquen |BÚSQUEDA| */
+
 const fillerImage = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
-
-const renderSeries = (data, containerDOM) => {
+const renderSeries = (data, containerFavoriteSerie) => {
     let content = '';
     
     for(const serie of data){
      const imageUrl = serie.images.jpg.image_url ? serie.images.jpg.image_url : fillerImage;
 
-        content += ` <div class="js-serie" id="${serie.mal_id}">
+        content += ` <div class="individual-serie js-serie" id="${serie.mal_id}">
                 <img src="${serie.images.jpg.image_url}"/>
                   <h3>${serie.title}</h3>`;
         content += '</div>';
     }
-   containerDOM.innerHTML = content;
+   containerFavoriteSerie.innerHTML = content;
    const containerSeries = document.querySelectorAll('.js-serie');
    for(const containerSerie of containerSeries){
     containerSerie.addEventListener('click', handleAddFavorite);
@@ -53,7 +54,7 @@ const renderSeries = (data, containerDOM) => {
 
 
 
-/* Buscar las series con la info del servidor */
+/* Buscar las series con la info del servidor |BÚSQUEDA| */ 
 
 const handleclick = (event) => {
     event.preventDefault();
@@ -71,8 +72,6 @@ const handleclick = (event) => {
     const titleSeriesLS = JSON.parse(localStorage.getItem('seriesAnime'));
   
 }
-
-
 
 
 buttonSearch.addEventListener('click', handleclick);

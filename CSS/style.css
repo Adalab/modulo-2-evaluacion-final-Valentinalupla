@@ -1,0 +1,21 @@
+.favorites {
+    float: left;
+    border: 1px solid greenyellow ;
+    padding: 10px;
+    background-color: deeppink ;
+    font-weight: lighter;
+
+}
+h1 {
+    color: deeppink;
+    
+}
+button {
+    color: white;
+    background-color: deeppink;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
