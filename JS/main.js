@@ -1,22 +1,39 @@
 'use strict';
 const inputSearch = document.querySelector('.js-search');
 const buttonSearch = document.querySelector('.js-button');
-const containerSerie = document.querySelector('.js-container');
+const container = document.querySelector('.js-container');
+const containerFavoriteSerie = document.querySelector('.js-container-favorite');
 
 let titleSeries = [];
 let favoriteSerie = [];
 
+
+/*Click serie favorita */
+const handleAddFavorite = () => {
+    console.log('ey');
+}
+
+
 /* Pintar las series en el html cuando la busquen*/
+const fillerImage = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+
+
 const renderSeries = (data) => {
     let content = '';
     
     for(const serie of data){
-        content += `<div>
+     const imageUrl = serie.images.jpg.image_url ? serie.images.jpg.image_url : fillerImage;
+
+        content += `<div class="js-serie">
                 <img src="${serie.images.jpg.image_url}"/>
                   <h3>${serie.title}</h3>`;
-       content += '</div>';
+        content += '</div>';
     }
-   containerSerie.innerHTML = content;
+   container.innerHTML = content;
+   const containerSeries = document.querySelectorAll('.js-serie');
+   for(const containerSerie of containerSeries){
+    containerSerie.addEventListener('click', handleAddFavorite);
+   }
 }
 
 
