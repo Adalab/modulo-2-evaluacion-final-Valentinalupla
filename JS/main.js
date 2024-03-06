@@ -24,19 +24,22 @@ favoriteSerieLS();
 /*Click serie favorita |FAVORITOS|  */
 const handleAddFavorite = (event) => {
     event.preventDefault();
-   const selectedSerie = titleSeries.find((serie) => {
-    return parseInt(event.currentTarget.id) === serie.mal_id;
-    }); console.log('selectedSerie', selectedSerie);
+    const selectedSerie = titleSeries.find((serie) => {
+        return parseInt(event.currentTarget.id) === serie.mal_id;
+        }); console.log('selectedSerie', selectedSerie);
+
     // buscar si el elemento seleccionado ya existe en favoritos
-     const indexFavSerie = favoriteSerie.findIndex((favoriteTitle) => {
+    const indexFavSerie = favoriteSerie.findIndex((favoriteTitle) => {
          return favoriteTitle.mal_id === selectedSerie.mal_id;
      });
 
     if(indexFavSerie === -1){
-    favoriteSerie.push(selectedSerie);
-    event.currentTarget.style.backgroundColor = 'greenyellow';
-    event.currentTarget.style.color = 'deeppink';
-    saveFavSerieLS();}
+        favoriteSerie.push(selectedSerie);
+        event.currentTarget.style.backgroundColor = 'deeppink';
+        event.currentTarget.style.color = 'white';
+        saveFavSerieLS();
+    }
+
     renderSeries(favoriteSerie, containerFavoriteSerie);   /*Renderiza las series */
 }
 
@@ -53,15 +56,16 @@ const renderSeries = (data, containerFavoriteSerie) => {
 
         content += ` <div class="individual-serie js-serie" id="${serie.mal_id}">
                 <img src="${imageUrl}"/>
-                  <h3>${serie.title}</h3>`;
+                  <h3 class="title-serie">${serie.title}</h3>`;
         content += '</div>';
     }
    containerFavoriteSerie.innerHTML = content;
    const containerSeries = document.querySelectorAll('.js-serie');
-   for(const containerSerie of containerSeries){
-    containerSerie.addEventListener('click', handleAddFavorite);
-   }
+    for(const containerSerie of containerSeries){
+      containerSerie.addEventListener('click', handleAddFavorite);
+    }
 }
+
 renderSeries(favoriteSerie, containerFavoriteSerie); 
 
 
@@ -83,6 +87,7 @@ const handleclick = (event) => {
 
   
 }
+
 
 buttonSearch.addEventListener('click', handleclick);
 
