@@ -7,7 +7,18 @@ const containerFavoriteSerie = document.querySelector('.js-container-favorites')
 let titleSeries = [];
 let favoriteSerie = [];
 
-
+/* Guardar serie favorita en LocalStorage */
+// const favoriteSerieLS = () => {
+//     const favStorage = localStorage.getItem('favoriteSerie');
+//     if(favStorage){
+//         favoriteSerie = JSON.parse(favStorage);
+        
+//     }
+// }
+const saveFavSerieLS = () => {
+    localStorage.setItem('favoriteSerie', JSON.stringify(favoriteSerie));
+    console.log(saveFavSerieLS);
+}
 
 /*Click serie favorita |FAVORITOS|  */
 const handleAddFavorite = (event) => {
@@ -21,6 +32,7 @@ const handleAddFavorite = (event) => {
     });
     console.log(favoriteSerie);
     if(indexFavSerie === -1){
+        saveFavSerieLS();
         favoriteSerie.push(selectedSerie);
         event.currentTarget.style.backgroundColor = 'greenyellow';
         event.currentTarget.style.color = 'deeppink';
