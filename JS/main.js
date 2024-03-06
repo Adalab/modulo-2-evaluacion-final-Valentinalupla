@@ -24,9 +24,10 @@ const favoriteSerieLS = () => {
 /*Click serie favorita |FAVORITOS|  */
 const handleAddFavorite = (event) => {
     event.preventDefault();
-   const selectedSerie = titleSeries.find((serie) => {
-    return parseInt(event.currentTarget.id) === serie.mal_id;
-    });
+    const selectedSerieId = parseInt(event.currentTarget.id);
+   const selectedSerie = titleSeries.find((serie) => 
+     serie.mal_id === selectedSerieId);
+     if(!selectedSerie) return;
     // buscar si el elemento seleccionado ya existe en favoritos
     const indexFavSerie = favoriteSerie.findIndex((favoriteTitle) => {
         return favoriteTitle.mal_id === selectedSerie.mal_id;
