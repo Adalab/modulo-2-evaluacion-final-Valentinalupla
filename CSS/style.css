@@ -36,6 +36,7 @@ button {
 .big-section {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 100px;
     padding: 30px;
 }
