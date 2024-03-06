@@ -1,11 +1,11 @@
-.favorites {
-    float: left;
-    border: 1px solid greenyellow ;
-    padding: 10px;
-    background-color: deeppink ;
-    font-weight: lighter;
-
+.big-section {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
 }
+/* h2 {
+    order: 2;
+} */
 h1 {
     color: deeppink;
     
