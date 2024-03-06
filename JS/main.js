@@ -8,16 +8,17 @@ let titleSeries = [];
 let favoriteSerie = [];
 
 /* Guardar serie favorita en LocalStorage */
-// const favoriteSerieLS = () => {
-//     const favStorage = localStorage.getItem('favoriteSerie');
-//     if(favStorage){
-//         favoriteSerie = JSON.parse(favStorage);
-        
-//     }
-// }
+
 const saveFavSerieLS = () => {
     localStorage.setItem('favoriteSerie', JSON.stringify(favoriteSerie));
     console.log(saveFavSerieLS);
+}
+const favoriteSerieLS = () => {
+    const favStorage = localStorage.getItem('favoriteSerie');
+    if(favStorage){
+        favoriteSerie = JSON.parse(favStorage);
+        
+    }
 }
 
 /*Click serie favorita |FAVORITOS|  */
