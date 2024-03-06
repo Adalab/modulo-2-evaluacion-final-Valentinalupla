@@ -3,6 +3,7 @@ const inputSearch = document.querySelector('.js-search');
 const buttonSearch = document.querySelector('.js-button');
 const container = document.querySelector('.js-container');
 const containerFavoriteSerie = document.querySelector('.js-container-favorites');
+const buttonFav = document.querySelector('.js-buttonFav');
 
 let titleSeries = [];
 let favoriteSerie = [];
@@ -56,14 +57,23 @@ const renderSeries = (data, containerFavoriteSerie) => {
 
         content += ` <div class="individual-serie js-serie" id="${serie.mal_id}">
                 <img src="${imageUrl}"/>
-                  <h3 class="title-serie">${serie.title}</h3>`;
+                  <h3 class="title-serie">${serie.title}</h3>
+                  <h4 class="title-serie"> ${serie.title_japanese} ${serie.year}</h4>
+                  `;
         content += '</div>';
+        
     }
    containerFavoriteSerie.innerHTML = content;
    const containerSeries = document.querySelectorAll('.js-serie');
     for(const containerSerie of containerSeries){
       containerSerie.addEventListener('click', handleAddFavorite);
     }
+    buttonFav.addEventListener('click', () => {
+        const favoriteNumber = favoriteSerie.length;
+        console.log(`Tienes ${favoriteNumber} elementos en tu lista de favoritos`);
+    })
+
+    
 }
 
 renderSeries(favoriteSerie, containerFavoriteSerie); 
